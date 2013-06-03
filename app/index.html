@@ -2,15 +2,104 @@
 <html ng-app="myApp">
 <head>
     <title>Beerless in Seattle</title>
+    <link rel="stylesheet" type="text/css" href="css/style.css"/>
 </head>
 <body>
 
-<div ng-controller="BeerListController">
-    <input type="text" ng-model="query" />
-    <div ng-repeat="beer in beers.data | filter:query">
-        {{beer.name}}
+
+<div id="container">
+    <header>
+        <h1>World of Beer</h1>
+
+        <nav>
+            <ul>
+                <li><a href="index.html">Beer</a></li>
+                <li><a href="index.html">Beer</a></li>
+                <li><a href="index.html">Beer</a></li>
+                <li><a href="index.html">Beer</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <div id="list" class="content" ng-controller="BeerListController">
+
+        <div id="searchbar">
+            <select id="style">
+                <option value="0">Select style ...</option>
+            </select>
+
+            <input type="text" ng-model="query" />
+        </div>
+
+        <table class="results">
+            <thead>
+            <tr>
+                <th>Name</th>
+                <th>Brewery</th>
+                <th>ABV</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr ng-repeat="beer in beers.data | filter:query | limitTo:20">
+                <td>{{beer.name}}</td>
+                <td>{{beer.category.name}}</td>
+                <td>{{beer.abvMax}}</td>
+            </tbody>
+            <tfoot>
+            <tr>
+                <th colspan="3"></th>
+            </tr>
+            </tfoot>
+
+        </table>
+    </div>
+
+    <div id="beer" class="content">
+        <div class="sidebar">
+            <img src="https://s3.amazonaws.com/brewerydbapi/beer/Uiol9p/upload_drOw0u-medium.png"/>
+            <table>
+                <tr>
+                    <th>ABV</th>
+                    <th>IBU</th>
+                    <th>SRM</th>
+                    <th>OH</th>
+                </tr>
+                <tr>
+                    <td>4,8%</td>
+                    <td>-</td>
+                    <td>-</td>
+                    <td>-</td>
+                </tr>
+            </table>
+        </div>
+
+        <div class="details">
+            <p><span>Name:</span><span>Anchor Steam</span></p>
+
+            <p><span>Brewed by:</span><span>Anchor Brewing</span></p>
+
+            <p><span>Style:</span><span>Hybrid/mixed Beer</span></p>
+
+            <p>Anchor Steam Beer owes its deep amber color, thick, creamy head, and rich, distinctive flavor to a
+                brewing process like none other.<br/><br/>
+                It is a process that combines deep respect for brewing tradition with many decades of evolution to
+                arrive at a unique approach: a blend of pale and caramel malts, fermentation with lager yeast at warmer
+                ale temperatures in shallow open-air fermenters, and gentle carbonation in our cellars through an
+                all-natural process called kräusening.<br/><br/>Anchor Steam Beer derives its unusual name from the 19th
+                century when "steam" was a nickname for beer brewed on the West Coast of America under primitive
+                conditions and without ice. While the origin of the name remains shrouded in mystery, it likely relates
+                to the original practice of fermenting the beer on San Francisco's rooftops in a cool climate. In lieu
+                of ice, the foggy night air naturally cooled the fermenting beer, creating steam off the warm open pans.
+                Once a nickname for any West Coast beer brewed under these conditions, today the name "steam" is a
+                trademark of Anchor Brewing and applies only to the singular process and taste of our flagship brand -
+                San Francisco's original Anchor Steam Beer. The classic of American brewing tradition since 1896.</p>
+        </div>
+        <div style="clear: both;"></div>
     </div>
 </div>
+
+
+
 
 </body>
 <script src="http://code.angularjs.org/1.0.6/angular.min.js"></script>

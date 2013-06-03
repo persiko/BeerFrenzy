@@ -7,7 +7,6 @@ app.controller('BeerListController', function ($scope) {
     // Call the async method and then do stuff with what is returned inside our own then function
     //beerService.async().then(function (d) {
     //    $scope.beers = d;
-    //});
 
     $scope.beers =
     {"message": "Request Successful", "data": [
