@@ -1,0 +1,19 @@
+<!doctype html>
+<html ng-app="myApp">
+<head>
+    <title>Beerless in Seattle</title>
+</head>
+<body>
+
+<div ng-controller="BeerListController">
+    <input type="text" ng-model="query" />
+    <div ng-repeat="beer in beers.data | filter:query">
+        {{beer.name}}
+    </div>
+</div>
+
+</body>
+<script src="http://code.angularjs.org/1.0.6/angular.min.js"></script>
+<script src="js/controllers.js"></script>
+<!-- script src="js/services/services.js"></script -->
+</html>
